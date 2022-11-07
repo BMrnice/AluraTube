@@ -29,26 +29,29 @@ export default HomePage
 
 
 const StyledHeader = styled.div`
-        img {
-            margin-right: 15px;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-        }
-        .user-info {
-            margin-top:50px;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            padding: 16px 32px;
-            gap: ;
-        }
+         img {
+        width: 100%;
+        height: 70vh;
+    }
+    .user-info{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 16px 32px;
+        gap: 16px;
+    }
+    .user-info > img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
   `;
 function Header() {
     return (
         <StyledHeader>
-            {/*<img src="banner" />*/}
-
+            <section className="user-banner" >
+                <img src={config.banner} />
+            </section>
             <section className="user-info">
                 <img src={`https://github.com/${config.github}.png`} />
                 <div>
@@ -64,6 +67,8 @@ function Header() {
         </StyledHeader>
     )
 };
+
+
 
 function TimeLine(props) {
     //console.log("bagaluho dadad", props)
