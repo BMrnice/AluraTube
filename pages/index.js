@@ -31,8 +31,11 @@ export default HomePage
 const StyledBanner = styled.div`
     //background-image: url(${config.banner});
     background-image: url(${({bg})=>bg}); // Aqui esta sendo passado o valor por referencia de props usando arrowfunction 
-    height: 250px;
+    height: 490px;
     width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     
 `;
 
@@ -60,6 +63,7 @@ function Header() {
             <StyledBanner bg={config.banner}/>
             <section className="user-banner" >
                 {/* <img src={config.banner} /> */}
+                
             </section>
             <section className="user-info">
                 <img src={`https://github.com/${config.github}.png`} />
