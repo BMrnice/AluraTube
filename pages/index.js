@@ -1,3 +1,4 @@
+import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
@@ -6,17 +7,18 @@ import { StyledTimeline } from "../src/components/TimeLine";
 
 
 function HomePage() {
-    const estilosDaHomePage = { backgroundColor: "red" };
+    const estilosDaHomePage = { backgroundColor: "" };
 
     //console.log(config.playLists);
-
+    const [valorDoFiltro, setValorDoFiltro] =React.useState ("");
     return (
         <>
             <CSSReset/>
             <div style={estilosDaHomePage}>
-                <Menu />
+                {/* {props drilling} */}
+                <Menu  valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro}/>
                 <Header />
-                <TimeLine playLists={config.playLists} />
+                <TimeLine searchValue={valorDoFiltro} playLists={config.playLists} />
             </div>
         </>
         
@@ -26,7 +28,13 @@ function HomePage() {
 export default HomePage
 
 
-
+const StyledBanner = styled.div`
+    //background-image: url(${config.banner});
+    background-image: url(${({bg})=>bg}); // Aqui esta sendo passado o valor por referencia de props usando arrowfunction 
+    height: 250px;
+    width: 100%;
+    
+`;
 
 const StyledHeader = styled.div`
          img {
@@ -43,14 +51,15 @@ const StyledHeader = styled.div`
     .user-info > img {
         width: 80px;
         height: 80px;
-        border-radius: 50%;
+        border-radius: 30%;
     }
   `;
 function Header() {
     return (
         <StyledHeader>
+            <StyledBanner bg={config.banner}/>
             <section className="user-banner" >
-                <img src={config.banner} />
+                {/* <img src={config.banner} /> */}
             </section>
             <section className="user-info">
                 <img src={`https://github.com/${config.github}.png`} />
@@ -70,8 +79,8 @@ function Header() {
 
 
 
-function TimeLine(props) {
-    //console.log("bagaluho dadad", props)
+function TimeLine({searchValue, ...props}) {
+    //console.log("escreve ", props)
     const playListNames = Object.keys(props.playLists)
     //statement
     // retorno por expressao
@@ -80,12 +89,16 @@ function TimeLine(props) {
             {playListNames.map(playListNames => {
                 const videos = props.playLists[playListNames]
                 return (
-                    <section>
+                    <section key={playListNames}>
                         <h2>{playListNames}</h2>
                         <div>
-                            {videos.map((video) => {
+                            {videos.filter((video)=>{
+                                const titleNormalized= video.title.toLowerCase();
+                                const searchValueNormalized= searchValue.toLowerCase();
+                                return titleNormalized.includes(searchValueNormalized)
+                            }).map((video) => {
                                 return (
-                                    <a href={video.url}>
+                                    <a key={video.url} href={video.url}>
                                         <img src={video.thumb} />
                                         <span>
                                             {video.title}
