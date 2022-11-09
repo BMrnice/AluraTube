@@ -1,3 +1,4 @@
+import config from "../../../../config.json";
 import React from "react";
 import styled from "styled-components"
 
@@ -34,6 +35,10 @@ const StyledSearch = styled.div`
   }
 `;
 
+const SearchIcon = styled.div`
+  background-image: url(${({lp})=>lp});
+`;
+
 export default function Search({ valorDoFiltro, setValorDoFiltro}){
     //const [valorDaBusca, setValorDaBusca] = React.useState("React");
     //console.log("Search", valorDaBusca)
@@ -44,7 +49,7 @@ export default function Search({ valorDoFiltro, setValorDoFiltro}){
             <input type="text" onChange={(infosDoEvento)=>setValorDaBusca(infosDoEvento.target.value)
         } value={valorDaBusca}/>
             <button>
-                LUPA
+            <p>Busca</p>
             </button>
             
         </StyledSearch>

@@ -1,8 +1,9 @@
 {
-    "name": "Magnilson Moreira (DevBmr)",
-    "job": "Web Developer Jr",
+    "name": "Magnilson Moreira (DevBrnice)",
+    "job": "Desenvolvedor Front-End",
     "github": "BMrnice",
     "banner":"https://images.unsplash.com/photo-1598986646512-9330bcc4c0dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    "lupa": "./img/search.svg",
     "playLists": {
         "jogos": [
             {

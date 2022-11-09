@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import StyledSwitch from "./componentes/DarkModeSwitch";
 import Search from "./componentes/Search";
 
 const StyledMenu = styled.header`
@@ -16,12 +17,15 @@ const StyledMenu = styled.header`
   .logo {
     width: 100%;
     max-width: 80px;
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 8px;
     @media (min-width: 600px) {
       max-width: 127px;
     }
     .text {
       fill: ${({ theme }) => theme.textColorBase || "#222222"};
     }
+   
   }
 `;
 
@@ -32,6 +36,7 @@ export default function Menu({ valorDoFiltro,setValorDoFiltro }) {
         <Logo />
       </div>
         <Search valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
+        <StyledSwitch/>
     </StyledMenu>
   );
 }

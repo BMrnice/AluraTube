@@ -9,6 +9,8 @@ export const CSSReset = createGlobalStyle`
   }
   body {
     font-family: sans-serif;
+    background-color: ${({ theme }) => theme.backgroundBase};
+    color: ${({ theme }) => theme.textColorBase};
   }
   /* NextJS */
   html {
@@ -27,6 +29,7 @@ export const CSSReset = createGlobalStyle`
   /* Globals */
   button,
   a {
+    color: ${({ theme }) => theme.textColorBase};
     text-decoration: none;
     opacity: 1;
     transition: .3s;
@@ -34,5 +37,6 @@ export const CSSReset = createGlobalStyle`
     &:focus {
       opacity: .5;
     }
+   
   }
 `;

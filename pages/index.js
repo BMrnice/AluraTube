@@ -1,9 +1,9 @@
 import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
-import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/TimeLine";
+
 
 
 function HomePage() {
@@ -13,12 +13,12 @@ function HomePage() {
     const [valorDoFiltro, setValorDoFiltro] =React.useState ("");
     return (
         <>
-            <CSSReset/>
             <div style={estilosDaHomePage}>
                 {/* {props drilling} */}
                 <Menu  valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro}/>
                 <Header />
                 <TimeLine searchValue={valorDoFiltro} playLists={config.playLists} />
+                
             </div>
         </>
         
@@ -40,9 +40,13 @@ const StyledBanner = styled.div`
 `;
 
 const StyledHeader = styled.div`
+        background-color: ${({ theme })=> theme.backgroundLevel1};
+
          img {
         width: 100%;
         height: 70vh;
+        box-shadow: 1px 1px 9px 1px ;
+        box-shadow: ${({ theme }) => theme.backgroundLevel1 || "#ffffff"};
     }
     .user-info{
         display: flex;
@@ -50,6 +54,7 @@ const StyledHeader = styled.div`
         width: 100%;
         padding: 16px 32px;
         gap: 16px;
+        box-shadow: 2px 2px 3px black;
     }
     .user-info > img {
         width: 80px;
@@ -58,6 +63,7 @@ const StyledHeader = styled.div`
     }
   `;
 function Header() {
+
     return (
         <StyledHeader>
             <StyledBanner bg={config.banner}/>
