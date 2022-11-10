@@ -27,7 +27,7 @@ export default function RegisterVideo() {
     const formCadastro = useForm({
         initialValues: {titulo: "magnilson", url:"morenonnon"}
     });
-    const [formVisivel, setFormVisivel] = React.useState(true);
+    const [formVisivel, setFormVisivel] = React.useState(false);
     // [x]falta o botao de chamada do register video
     // [x]modal {formulari que add video novo }
     // -> [] controlar o states, so chamar o modal quando o button for clicado
